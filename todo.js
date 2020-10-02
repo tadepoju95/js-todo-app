@@ -1,15 +1,15 @@
 
-let add = () => {
+let setValues = () => {
 	let userInput = document.getElementsByClassName('form-control')[0].value;
 	let arrayOfValues = [];
 	arrayOfValues.push(userInput);
 	localStorage.setItem(localStorage.length + 1,JSON.stringify(arrayOfValues));
 	document.getElementsByClassName('form-control')[0].value = '';
-	getOne();
+	listValues();
 
 }
 
-let getOne = () => {
+let listValues = () => {
 	let listItems = document.getElementById('listing');
 	let ulElement = '<ul>';
 	for(let i = 0; i < localStorage.length; i++) {

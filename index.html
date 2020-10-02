@@ -8,7 +8,7 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<script src="todo.js"></script>
 </head>
-<body onload="getOne()">
+<body onload="listValues()">
 	<div class="container">
 		<div class="row">
 		    <h1 class="col-sm-11 text-center">ToDo List</h1>
@@ -19,14 +19,13 @@
     		<button class="btn btn-outline-secondary" onclick="edit()" type="button">Edit</button>
   		</div>
   		<input type="text" class="form-control" placeholder="" aria-label="Example text with two button addons" aria-describedby="button-addon3">
-  		<button class="btn btn-outline-secondary" onclick="add()" type="button">Add</button>
+  		<button class="btn btn-outline-secondary" onclick="setValues()" type="button">Add</button>
   	   </div>
   	   <br>
         <div class="col-sm-11 text-center">
         	<div id="listing">
   				
 			</div>
-			<p id="getsome"></p>
 		</div>
 	</div>
 </body>
