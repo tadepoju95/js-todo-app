@@ -1,4 +1,4 @@
-
+/*
 let setValues = () => {
 	let userInput = document.getElementsByClassName('form-control')[0].value;
 	let arrayOfValues = [];
@@ -31,7 +31,28 @@ let deleteOne = () => {
 	localStorage.removeItem('userInput'); 
 
 }
+*/
 
 
+let setValues = () => {
+	let userInput = document.getElementsByClassName('form-control')[0].value;
+	let arrayOfValues = [];
+	arrayOfValues.push(userInput);
+	localStorage.setItem('userInput',  JSON.stringify(arrayOfValues));
+	document.getElementsByClassName('form-control')[0].value = '';
+	listValues();
 
+}
+
+let listValues = () => {
+	let listItems = document.getElementById('listing');
+	let getValues = JSON.parse(localStorage.getItem('userInput'));
+	let ulElement = '<ul>';
+	for(let i = 0; i < getValues.length; i++) {
+		console.log(getValues);
+		ulElement += '<li>' + getValues[i] + '</li>';
+	}
+	 ulElement += '</ul>'
+	 listItems.innerHTML = ulElement;
+}
 
