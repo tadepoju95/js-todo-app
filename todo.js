@@ -1,25 +1,29 @@
-/*
+
 let setValues = () => {
 	let userInput = document.getElementsByClassName('form-control')[0].value;
-	let arrayOfValues = [];
-	arrayOfValues.push(userInput);
-	localStorage.setItem(localStorage.length + 1,JSON.stringify(arrayOfValues));
+	if(localStorage.getItem('userInput') === null) {
+		localStorage.setItem('userInput',  '[]');
+	}
+	let getValues = JSON.parse(localStorage.getItem('userInput'));
+	getValues.push(userInput);
+	localStorage.setItem('userInput', JSON.stringify(getValues))
 	document.getElementsByClassName('form-control')[0].value = '';
 	listValues();
-
 }
 
 let listValues = () => {
 	let listItems = document.getElementById('listing');
+	let getValues = JSON.parse(localStorage.getItem('userInput'));
+	console.log(getValues);
 	let ulElement = '<ul>';
-	for(let i = 0; i < localStorage.length; i++) {
-		getValues = JSON.parse(localStorage.getItem(localStorage.key(i)));
-		ulElement += '<li>' + getValues + '</li>';
+	for(let i = 0; i < getValues.length; i++) {
+		if(localStorage.getItem('userInput') !== null) {
+			ulElement += '<li>' + getValues[i] + '</li>';
+		}
 	}
 	 ulElement += '</ul>'
 	 listItems.innerHTML = ulElement;
 }
-
 
 let edit = () => {
 	let editInputValue = document.getElementsByClassName('form-control')[0].contentEditable = 'true';
@@ -31,28 +35,10 @@ let deleteOne = () => {
 	localStorage.removeItem('userInput'); 
 
 }
-*/
 
 
-let setValues = () => {
-	let userInput = document.getElementsByClassName('form-control')[0].value;
-	let arrayOfValues = [];
-	arrayOfValues.push(userInput);
-	localStorage.setItem('userInput',  JSON.stringify(arrayOfValues));
-	document.getElementsByClassName('form-control')[0].value = '';
-	listValues();
 
-}
 
-let listValues = () => {
-	let listItems = document.getElementById('listing');
-	let getValues = JSON.parse(localStorage.getItem('userInput'));
-	let ulElement = '<ul>';
-	for(let i = 0; i < getValues.length; i++) {
-		console.log(getValues);
-		ulElement += '<li>' + getValues[i] + '</li>';
-	}
-	 ulElement += '</ul>'
-	 listItems.innerHTML = ulElement;
-}
+
+
 
