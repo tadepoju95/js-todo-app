@@ -1,10 +1,11 @@
 
 let setValues = () => {
 	let userInput = document.getElementsByClassName('form-control')[0].value;
-	if(localStorage.getItem('userInput') === null) {
-		localStorage.setItem('userInput',  '[]');
-	}
 	let getValues = JSON.parse(localStorage.getItem('userInput'));
+	if(getValues === null) {
+		getValues = [];
+	}
+	console.log(getValues);
 	getValues.push(userInput);
 	localStorage.setItem('userInput', JSON.stringify(getValues))
 	document.getElementsByClassName('form-control')[0].value = '';
@@ -35,10 +36,5 @@ let deleteOne = () => {
 	localStorage.removeItem('userInput'); 
 
 }
-
-
-
-
-
 
 
