@@ -16,17 +16,16 @@
 		<div class="input-group mb-3">
  		 <div class="input-group-prepend" id="button-addon3">
    			<button class="btn btn-outline-secondary" onclick="deleteOne()"  type="button">Delete</button>
-    		<button class="btn btn-outline-secondary" onclick="edit()" type="button">Edit</button>
   		</div>
   		<input type="text" class="form-control" placeholder="" aria-label="Example text with two button addons" aria-describedby="button-addon3">
   		<button class="btn btn-outline-secondary" onclick="setValues()" type="button">Add</button>
   	   </div>
   	   <br>
         <div class="col-sm-11 text-center">
-        	<div id="listing">
+        	<div id="listing" onmousedown="edit()">
   				
 			</div>
-			
+
 		</div>
 	</div>
 </body>

@@ -27,14 +27,26 @@ let listValues = () => {
 }
 
 let edit = () => {
-	let editInputValue = document.getElementsByClassName('form-control')[0].contentEditable = 'true';
-
+	let listItems = document.getElementById('listing');
+	let editInputValue = document.getElementsByClassName('form-control')[0];
+	console.log(editInputValue);
+	let getValues = JSON.parse(localStorage.getItem('userInput'));
+		if(listItems) {
+			editInputValue.value = getValues[0];
+		}	
 }
 
+/*
 let deleteOne = () => {
 	let deleteUserInput = document.getElementsByClassName('form-control')[0].value = '';
 	localStorage.removeItem('userInput'); 
 
 }
+*/
 
+/*
+if(document.getElementById('listing')) {
+		let editInputValue = document.getElementsByClassName('form-control')[0].value = 'ha';
+	}
 
+*/
