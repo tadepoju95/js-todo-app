@@ -19,13 +19,14 @@ let listValues = () => {
 	let listingItems = '';
 	for(let i = 0; i < getValues.length; i++) {
 		if(localStorage.getItem('userInput') !== null) {
-			listingItems += "<br><input value='" + getValues[i] + "' " + "id='" + i + "'" + "readonly/>";
+			listingItems += "<br><input value='" + getValues[i] + "' " + "id='" + i + "'" + "readonly/>" + "<button onclick='edit("+ i + ")'>" + "edit"  + "</button>";
 		}
 	}
 	 listItems.innerHTML = listingItems;
 }
 
-let edit = () => {
+let edit = (id) => {
+	console.log(id)
 	let removeAtrribute = document.getElementById('updateButton').disabled = false;
 	let disableReadOnly = document.getElementById('inputId').readOnly = false;
 	let inputFocus = document.getElementsByClassName('user-value')[0].focus();
