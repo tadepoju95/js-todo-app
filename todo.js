@@ -19,10 +19,10 @@ let listValues = () => {
 	let listingItems = '';
 	for(let i = 0; i < getValues.length; i++) {
 		if(localStorage.getItem('userInput') !== null) {
-			listingItems +=  getValues[i] ;
+			listingItems += "<br><input value='" + getValues[i] + "' " + "id='" + i + "'" + "readonly/>";
 		}
 	}
-	 listItems.value = listingItems;
+	 listItems.innerHTML = listingItems;
 }
 
 let edit = () => {
