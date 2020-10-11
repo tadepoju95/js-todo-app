@@ -1,6 +1,6 @@
 
 let setValues = () => {
-	let userInput = document.getElementsByClassName('form-control')[0].value;
+	let userInput = document.getElementsByClassName('form-controls')[0].value;
 	let getValues = JSON.parse(localStorage.getItem('userInput'));
 	if(getValues === null) {
 		getValues = [];
@@ -8,41 +8,39 @@ let setValues = () => {
 	console.log(getValues);
 	getValues.push(userInput);
 	localStorage.setItem('userInput', JSON.stringify(getValues))
-	document.getElementsByClassName('form-control')[0].value = '';
+	document.getElementsByClassName('form-controls')[0].value = '';
 	listValues();
 }
 
 let listValues = () => {
-	let listItems = document.getElementById('listing');
+	let listItems = document.getElementsByClassName('user-value')[0];
 	let getValues = JSON.parse(localStorage.getItem('userInput'));
 	console.log(getValues);
-	let ulElement = '<ul>';
+	let listingItems = '';
 	for(let i = 0; i < getValues.length; i++) {
 		if(localStorage.getItem('userInput') !== null) {
-			ulElement += '<li>' + getValues[i] + '</li>';
+			listingItems +=  getValues[i] ;
 		}
 	}
-	 ulElement += '</ul>'
-	 listItems.innerHTML = ulElement;
+	 listItems.value = listingItems;
 }
 
 let edit = () => {
-	let listItems = document.getElementById('listing');
-	let editInputValue = document.getElementsByClassName('form-control')[0];
-	console.log(editInputValue);
-	let getValues = JSON.parse(localStorage.getItem('userInput'));
-		if(listItems) {
-			editInputValue.value = getValues[0];
-		}	
+	let removeAtrribute = document.getElementById('updateButton').disabled = false;
+	let disableReadOnly = document.getElementById('inputId').readOnly = false;
+	let inputFocus = document.getElementsByClassName('user-value')[0].focus();
 }
 
-/*
+let update = () => {
+
+}
+
+
 let deleteOne = () => {
 	let deleteUserInput = document.getElementsByClassName('form-control')[0].value = '';
-	localStorage.removeItem('userInput'); 
 
 }
-*/
+
 
 /*
 if(document.getElementById('listing')) {

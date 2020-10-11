@@ -7,6 +7,7 @@
 body, html {
 	background-color: #2C2C29;
 	height: 0px;
+	
 }
 
 h1 {
@@ -29,4 +30,15 @@ h1 {
 	transform: translateY(100px);
 }
 
+.input-one {
+	transform: translateY(40px);
 
+}
+
+.user-value {
+	width: 50%;
+}
+
+.form-controls {
+	width: 75%;
+}
