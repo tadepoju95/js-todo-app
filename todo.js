@@ -19,7 +19,7 @@ let listValues = () => {
 	let listingItems = '';
 	for(let i = 0; i < getValues.length; i++) {
 		if(localStorage.getItem('userInput') !== null) {
-			listingItems += "<br><input value='" + getValues[i] + "' " + "id='" + i + "'" + "readonly/>" + "<button onclick='edit("+ i + ")'>" + "edit"  + "</button>" + "<button onclick='update("+ i + ")'>" + "update"  + "</button>";
+			listingItems += "<br><input value='" + getValues[i] + "' " + "id='" + i + "'" + "readonly/>" + "<button onclick='edit("+ i + ")' id='editItems'>" + "edit" + "</button>" + "<button onclick='update("+ i + ")' id='updateItems'>" + "update"  + "</button>" + "<button onclick='deleteItems("+ i + ")' id='deleteItems'>" + "delete"  + "</button>";
 		}
 	}
 	 listItems.innerHTML = listingItems;
@@ -41,14 +41,18 @@ let update = (id) => {
 }
 
 
-let deleteOne = () => {
-
+let deleteItems = (id) => {
+	let getValues = JSON.parse(localStorage.getItem('userInput'));
+	getValues.splice(id, 1);
+	localStorage.setItem('userInput', JSON.stringify(getValues));
+	let deleteInputElement = document.getElementById(id);
+	deleteInputElement.parentNode.removeChild(deleteInputElement); 
+	let deleteEditButton = document.getElementById('editItems');
+	deleteEditButton.parentNode.removeChild(deleteEditButton);
+	let deleteUpdateButton = document.getElementById('updateItems');
+	deleteUpdateButton.parentNode.removeChild(deleteUpdateButton);
+	let deleteButton = document.getElementById('deleteItems');
+	deleteButton.parentNode.removeChild(deleteButton);
 }
 
 
-/*
-if(document.getElementById('listing')) {
-		let editInputValue = document.getElementsByClassName('form-control')[0].value = 'ha';
-	}
-
-*/

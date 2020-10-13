@@ -24,19 +24,9 @@ h1 {
 	transform: translateY(200px);
 }
 
-#listing {
-	font-size: 15px;
-	color: floralwhite;
-	transform: translateY(100px);
-}
-
-.input-one {
-	transform: translateY(40px);
-
-}
-
 .user-value {
-	width: 50%;
+	width: 100%;
+	transform: translateY(40px);
 }
 
 .form-controls {
