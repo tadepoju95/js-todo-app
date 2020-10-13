@@ -19,7 +19,7 @@ let listValues = () => {
 	let listingItems = '';
 	for(let i = 0; i < getValues.length; i++) {
 		if(localStorage.getItem('userInput') !== null) {
-			listingItems += "<br><input value='" + getValues[i] + "' " + "id='" + i + "'" + "readonly/>" + "<button onclick='edit("+ i + ")'>" + "edit"  + "</button>";
+			listingItems += "<br><input value='" + getValues[i] + "' " + "id='" + i + "'" + "readonly/>" + "<button onclick='edit("+ i + ")'>" + "edit"  + "</button>" + "<button onclick='update("+ i + ")'>" + "update"  + "</button>";
 		}
 	}
 	 listItems.innerHTML = listingItems;
@@ -27,18 +27,21 @@ let listValues = () => {
 
 let edit = (id) => {
 	console.log(id)
-	let removeAtrribute = document.getElementById('updateButton').disabled = false;
-	let disableReadOnly = document.getElementById('inputId').readOnly = false;
-	let inputFocus = document.getElementsByClassName('user-value')[0].focus();
+	//let removeAtrribute = document.getElementById('id').disabled = false;
+	let disableReadOnly = document.getElementById(id).readOnly = false;
+	let inputFocus = document.getElementById(id).focus();
 }
 
-let update = () => {
+let update = (id) => {
+	let updateTodoItem = document.getElementById(id).value;
+	let getValues = JSON.parse(localStorage.getItem('userInput'));
+	getValues.splice(id, 1, updateTodoItem);
+	localStorage.setItem('userInput', JSON.stringify(getValues));
 
 }
 
 
 let deleteOne = () => {
-	let deleteUserInput = document.getElementsByClassName('form-control')[0].value = '';
 
 }
 
