@@ -1,4 +1,37 @@
 
+let listValues = (todo, todos) => {
+	//let userInput = document.getElementsByClassName('form-controls')[0].value;
+	let getValues = JSON.parse(localStorage.getItem('userInput'));
+	if(getValues === null) {
+		getValues = [];
+	}
+	console.log(getValues);
+	let getTitle = todo.title;
+	getValues.push(getTitle);
+	localStorage.setItem('userInput', JSON.stringify(getValues));
+	let listItems = document.getElementsByClassName('user-value');
+	let ulElement = '<ul>';
+	for(let i = 0; i < getValues.length; i++) {
+		ulElement += '<li>' + getValues[i] + '</li>';
+	}
+
+	 ulElement += '</ul>'
+	 listItems.innerHTML = ulElement;
+	  
+}
+
+let fetchTodos = () => {
+	axios.get('https://jsonplaceholder.typicode.com/todos')
+		 .then(response => {
+		 	let todos = response.data;
+		 	console.log(`GET todos`, todos); 
+		 	//listValues(todos);
+		 })
+		 .catch(error => console.error(error));
+}
+fetchTodos();
+
+/*
 let setValues = () => {
 	let userInput = document.getElementsByClassName('form-controls')[0].value;
 	let getValues = JSON.parse(localStorage.getItem('userInput'));
@@ -11,7 +44,10 @@ let setValues = () => {
 	document.getElementsByClassName('form-controls')[0].value = '';
 	listValues();
 }
+*/
 
+
+/*
 let listValues = () => {
 	let listItems = document.getElementsByClassName('user-value')[0];
 	let getValues = JSON.parse(localStorage.getItem('userInput'));
@@ -54,5 +90,5 @@ let deleteItems = (id) => {
 	let deleteButton = document.getElementById('deleteItems');
 	deleteButton.parentNode.removeChild(deleteButton);
 }
-
+*/
 
