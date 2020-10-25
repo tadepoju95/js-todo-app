@@ -1,35 +1,71 @@
+let setLocalstorage = (todos) => {
+  console.log(todos[0].title);
+  let listItems = '';
+  /*
+  for(let i = 0; i < todos.length; i++) {
+  	listItems = todos[i].title;
+  }
+  console.log(listItems);
+  */
 
-let listValues = (todo, todos) => {
-	//let userInput = document.getElementsByClassName('form-controls')[0].value;
-	let getValues = JSON.parse(localStorage.getItem('userInput'));
-	if(getValues === null) {
-		getValues = [];
+  let getValues = JSON.parse(localStorage.getItem('userInput'));
+  
+  for(let i = 0; i < todos.length; i++) {
+    if(getValues === null) {
+		getValues =  [];
+      getValues.push(todos[i]);
 	}
-	console.log(getValues);
-	let getTitle = todo.title;
-	getValues.push(getTitle);
-	localStorage.setItem('userInput', JSON.stringify(getValues));
-	let listItems = document.getElementsByClassName('user-value');
-	let ulElement = '<ul>';
-	for(let i = 0; i < getValues.length; i++) {
-		ulElement += '<li>' + getValues[i] + '</li>';
-	}
-
-	 ulElement += '</ul>'
-	 listItems.innerHTML = ulElement;
-	  
+  }
+  
+   console.log(getValues);
+  //getValues.push(listItems);
+  localStorage.setItem('userInput', JSON.stringify(getValues));
 }
+
+
+let appendDom = () => {
+  let getValues = JSON.parse(localStorage.getItem('userInput'));
+  let listingTitles = document.getElementsByClassName('user-value');
+  let ulElement = '<ul>'
+  for(let i = 0; i < getValues.length; i++) {
+  	ulElement += '<li>' + getValues[i] + '</li>'
+  }
+  ulElement += '</ul>'
+  listingTitles.innerHTML = ulElement;
+}
+
 
 let fetchTodos = () => {
 	axios.get('https://jsonplaceholder.typicode.com/todos')
 		 .then(response => {
 		 	let todos = response.data;
-		 	console.log(`GET todos`, todos); 
-		 	//listValues(todos);
+		 	//console.log(`GET todos`, todos); 
+		 	setLocalstorage(todos);
 		 })
 		 .catch(error => console.error(error));
 }
 fetchTodos();
+
+
+/*
+const listValues = (todos) => {
+	console.log(todos);
+
+	
+	
+}
+
+const fetchTodos = () => {
+	axios.get('https://jsonplaceholder.typicode.com/todos')
+		 .then(response => {
+		 	const todos = response.data;
+		 	//console.log(`GET todos`, todos[0].title); 
+		 	listValues(todos);
+		 })
+		 .catch(error => console.error(error));
+}
+fetchTodos();
+*/
 
 /*
 let setValues = () => {
@@ -44,10 +80,10 @@ let setValues = () => {
 	document.getElementsByClassName('form-controls')[0].value = '';
 	listValues();
 }
-*/
 
 
-/*
+
+
 let listValues = () => {
 	let listItems = document.getElementsByClassName('user-value')[0];
 	let getValues = JSON.parse(localStorage.getItem('userInput'));
