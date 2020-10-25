@@ -1,22 +1,18 @@
 let setLocalstorage = (todos) => {
   console.log(todos[0].title);
   let listItems = '';
-  /*
+  
   for(let i = 0; i < todos.length; i++) {
   	listItems = todos[i].title;
-  }
-  console.log(listItems);
-  */
+  	console.log(listItems);
 
-  let getValues = JSON.parse(localStorage.getItem('userInput'));
+  }
   
-  for(let i = 0; i < todos.length; i++) {
+  let getValues = JSON.parse(localStorage.getItem('userInput'));
     if(getValues === null) {
 		getValues =  [];
-      getValues.push(todos[i]);
 	}
-  }
-  
+
    console.log(getValues);
   //getValues.push(listItems);
   localStorage.setItem('userInput', JSON.stringify(getValues));
@@ -36,7 +32,7 @@ let appendDom = () => {
 
 
 let fetchTodos = () => {
-	axios.get('https://jsonplaceholder.typicode.com/todos')
+	axios.get('https://jsonplaceholder.typicode.com/todos?_limit=10')
 		 .then(response => {
 		 	let todos = response.data;
 		 	//console.log(`GET todos`, todos); 
