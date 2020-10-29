@@ -7,7 +7,9 @@ let setLocalstorage = (todos) => {
 	}
   
   for(let i = 0; i < todos.length; i++) {
+  	if(getValues === []) {
   	listItems = getValues.push(todos[i].title);
+  }
     //console.log(getValues);
   }
   localStorage.setItem('userInput', JSON.stringify(getValues));
