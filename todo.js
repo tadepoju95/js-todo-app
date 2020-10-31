@@ -1,69 +1,26 @@
-let setLocalstorage = (todos) => {
-  console.log(todos[0].title);
-  let listItems = '';
-  let getValues = JSON.parse(localStorage.getItem('userInput'));
-    if(getValues === null) {
-		getValues =  [];
-	}
-  
-  for(let i = 0; i < todos.length; i++) {
-  	if(getValues === []) {
-  	listItems = getValues.push(todos[i].title);
-  }
-    //console.log(getValues);
-  }
-  localStorage.setItem('userInput', JSON.stringify(getValues));
-  //console.log(getValues);
-  createLi();
-
-}
-
-let createLi = () => {
-  let getValues = JSON.parse(localStorage.getItem('userInput'));
-  console.log(getValues);
-  let listingTitles = document.getElementsByClassName('user-value')[0];
-  let ulElement = '<ul>'
-  for(let i = 0; i < getValues.length; i++) {
-  	ulElement += '<li>' + getValues[i] + '</li>'
-  }
-  ulElement += '</ul>'
-  listingTitles.innerHTML = ulElement;
-  console.log(ulElement);
-}
 
 let fetchTodos = () => {
-	axios.get('https://jsonplaceholder.typicode.com/todos?_limit=10')
+    let getValues = JSON.parse(localStorage.getItem('userInput'));
+    if(getValues === null) {
+	   axios.get('https://jsonplaceholder.typicode.com/todos?_limit=5')
 		 .then(response => {
 		 	let todos = response.data;
-		 	//console.log(`GET todos`, todos); 
-		 	setLocalstorage(todos);
+		 	console.log(`GET todos`, todos); 
+           	let listTitles = document.getElementsByClassName('user-value')[0];
+            let createElement = '<ul>'
+           for(let i = 0; i < todos.length; i++) {
+              createElement += '<li>' + todos[i].title + '</li>';
+           }
+           createElement += '</ul>'
+           listTitles.innerHTML = createElement;
 		 })
-		 .catch(error => console.error(error));
+		 .catch(error => console.error(error));  
+    }
+    console.log(getValues);
 }
 fetchTodos();
 
 
-/*
-const listValues = (todos) => {
-	console.log(todos);
-
-	
-	
-}
-
-const fetchTodos = () => {
-	axios.get('https://jsonplaceholder.typicode.com/todos')
-		 .then(response => {
-		 	const todos = response.data;
-		 	//console.log(`GET todos`, todos[0].title); 
-		 	listValues(todos);
-		 })
-		 .catch(error => console.error(error));
-}
-fetchTodos();
-*/
-
-/*
 let setValues = () => {
 	let userInput = document.getElementsByClassName('form-controls')[0].value;
 	let getValues = JSON.parse(localStorage.getItem('userInput'));
@@ -78,17 +35,13 @@ let setValues = () => {
 }
 
 
-
-
 let listValues = () => {
 	let listItems = document.getElementsByClassName('user-value')[0];
 	let getValues = JSON.parse(localStorage.getItem('userInput'));
 	console.log(getValues);
 	let listingItems = '';
 	for(let i = 0; i < getValues.length; i++) {
-		if(localStorage.getItem('userInput') !== null) {
-			listingItems += "<br><input value='" + getValues[i] + "' " + "id='" + i + "'" + "readonly/>" + "<button onclick='edit("+ i + ")' id='editItems'>" + "edit" + "</button>" + "<button onclick='update("+ i + ")' id='updateItems'>" + "update"  + "</button>" + "<button onclick='deleteItems("+ i + ")' id='deleteItems'>" + "delete"  + "</button>";
-		}
+		listingItems += "<br><input value='" + getValues[i] + "' " + "id='" + i + "'" + "readonly/>" + "<button onclick='edit("+ i + ")' id='editItems'>" + "edit" + "</button>" + "<button onclick='update("+ i + ")' id='updateItems'>" + "update"  + "</button>" + "<button onclick='deleteItems("+ i + ")' id='deleteItems'>" + "delete"  + "</button>";
 	}
 	 listItems.innerHTML = listingItems;
 }
@@ -122,5 +75,4 @@ let deleteItems = (id) => {
 	let deleteButton = document.getElementById('deleteItems');
 	deleteButton.parentNode.removeChild(deleteButton);
 }
-*/
 
