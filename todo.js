@@ -12,15 +12,15 @@ let setValues = () => {
 }
 
 let listValues = () => {
-	let listItems = document.getElementsByClassName('user-value')[0];
+	let divElement = document.getElementsByClassName('user-value')[0];
 	let getValues = JSON.parse(localStorage.getItem('userInput'));
-	let listingItems = '';
+	let createElements = '';
 	for(let i = 0; i < getValues.length; i++) {
 		if(localStorage.getItem('userInput') !== null) {
-			listingItems += "<br><input value='" + getValues[i] + "' " + "id='" + i + "'" + "readonly/>" + "<button onclick='edit("+ i + ")' id='editItems'>" + "edit" + "</button>" + "<button onclick='update("+ i + ")' id='updateItems'>" + "update"  + "</button>" + "<button onclick='deleteItems("+ i + ")' id='deleteItems'>" + "delete"  + "</button>";
+			createElements += "<br><input value='" + getValues[i] + "' " + "id='" + i + "'" + "readonly/>" + "<button onclick='edit("+ i + ")' id='editItems'>" + "edit" + "</button>" + "<button onclick='update("+ i + ")' id='updateItems'>" + "update"  + "</button>" + "<button onclick='deleteItems("+ i + ")' id='deleteItems'>" + "delete"  + "</button>";
 		}
 	}
-	 listItems.innerHTML = listingItems;
+	 divElement.innerHTML = createElements;
 }
 
 let edit = (id) => {
