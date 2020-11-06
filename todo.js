@@ -10,12 +10,13 @@ let fetchTodos = () => {
            	getValues.push(todos[i].title);
            }
            	localStorage.setItem('todoArray', JSON.stringify(getValues));
-           	listValues();
+           	listValues(); 
 		 })
 		 .catch(error => console.error(error));  
+    } else {
+    	listValues(); 
     }
 }
-fetchTodos();
 
 
 let setValues = () => {
